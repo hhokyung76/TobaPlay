@@ -24,5 +24,10 @@ public class BootstrapController {
     public String sample2() {
         return "sample-page2";
     }
+
+    @RequestMapping("/cookie-page")
+    public String cookie_page() {
+        return "cookie-page";
+    }
 }
 
