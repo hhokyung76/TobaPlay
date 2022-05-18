@@ -3,27 +3,11 @@
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* 잡 현황 
+* 잡 리스트
+  * 잡아이디, 예정시간, 마지막 성공시간
+* 잡 등록
+  * 잡아이디, 잡 명, 잡 설명, 
+  * task등록
+    * task아이디, task명, task설명, task command, task 순번.
+      * task parameter 설정. 
