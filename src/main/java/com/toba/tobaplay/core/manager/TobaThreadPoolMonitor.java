@@ -18,7 +18,7 @@ public class TobaThreadPoolMonitor {
 
     private final String poolName = "TobaFlowExecServicePool";
 
-    @Scheduled(cron = "*/10 * * * * *")
+    //@Scheduled(cron = "*/10 * * * * *")
     private void printThreadPoolMonitor() {
         monitoredThreadPool = (ThreadPoolExecutor) tobaFlowManager.getTobaFlowExecService();
         int activeCount = this.monitoredThreadPool.getActiveCount();

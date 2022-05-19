@@ -53,6 +53,7 @@ dependencies {
 
 
     implementation 'ch.obermuhlner:java-scriptengine:2.0.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
 }
 
 tasks.named('test') {

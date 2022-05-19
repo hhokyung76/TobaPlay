@@ -27,7 +27,7 @@
     <!-- vendor css -->
     <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
 	<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet"/>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 </head>
 <script type="text/javascript">
     var setCookie = function(name, value, day) {
@@ -48,15 +48,59 @@
 
     var test = function() {
         setCookie("test", "test1234", 1);
-        alert(getCookie("test"));
+        console.log(getCookie("test"));
         deleteCookie("test");
-        alert(getCookie("test"));
+        console.log(getCookie("test"));
+
+        var totalheight=400;
+        var totalwidth = 600;
+        var height = 80;
+        var width = 40;
+        var divheight = totalheight / height;
+        var divwidth = totalwidth / width;
+        var id=1;
+        //document.createElement("iframe").setAttribute("id", "tg360_inner");
+        //var div3 = document.createElement("<div id='"+id+"' style=\"background:#F0E68C;width:"+width+"px;height:"+height+"px;border:solid 1px #c0c0c0;padding: 0.5em;text-align: center;float:left;\"></div>");
+        //document.body.appendChild(div3);
+        document.getElementById("home").src = "https://www.baeldung.com/spring-boot-custom-error-page";
+        //$('#home').load("https://www.baeldung.com/spring-boot-custom-error-page");
+        console.log(document.getElementById("home"));
+
+        var tempDiv = document.getElementById("home");
+        tempDiv.setAttribute("innerHTML", "<object type='text/html' data='home.html'></object>");
     }
-    var btn = document.getElementById("btn");
+
+
+    //var btn = document.getElementById("btn");
     // btn.addEventListener('click', event => {
     //     test();
     // });
 
+    var getCookieForTg = function() {
+        alert(getCookie("tg-id"));
+    }
+
+    function load_init() {
+        var obj = new ActiveXObject("WbemScripting.SWbemLocator");
+        var s = obj.ConnectServer(".");
+        var properties = s.ExecQuery("SELECT * FROM ")
+    }
+
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+    // var CampaignPage = {
+    //     renderHome: function() {
+    //         $("#home").load("https://www.baeldung.com/spring-boot-custom-error-page");
+    //     }
+    // }
+    // $(document).ready( function() {
+    //     $('#home').load("https://www.baeldung.com/spring-boot-custom-error-page");
+    //     alert('good');
+    // });
+    jQuery(document).ready(function(){
+        jQuery("#home").load("https://www.baeldung.com/spring-boot-custom-error-page");
+    });
 </script>
 <body class="">
 	<!-- [ Pre-loader ] start -->
@@ -126,9 +170,10 @@
                         <h5>Hello card22</h5>
                     </div>
                     <div class="card-body">
+                        <div id="home" style="border: 1px solid gold; padding: 10px; height: auto; min-height: 100px; overflow: auto;" width="200" height="200" src="https://www.baeldung.com/spring-boot-custom-error-page"></div>
                         <button type="button" class="btn  btn-primary" id="btn" onclick="test();">쿠키 테스트</button>
-                        <button type="button" class="btn  btn-secondary">Secondary</button>
-                        <button type="button" class="btn  btn-success">Success</button>
+                        <button type="button" class="btn  btn-secondary" onclick="getCookieForTg();">GET TG-ID</button>
+                        <button type="button" class="btn  btn-success" id="successBtn">Success</button>
                         <button type="button" class="btn  btn-danger">Danger</button>
                         <button type="button" class="btn  btn-warning">Warning</button>
                         <button type="button" class="btn  btn-info">Info</button>
