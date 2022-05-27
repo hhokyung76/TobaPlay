@@ -90,61 +90,81 @@ public class BootstrapController {
         return json;
     }
 
-    @RequestMapping("/test/unified_id_redirect")
-    public ResponseEntity astgTest2(HttpServletRequest req, HttpServletResponse res
-            , @RequestParam(value = "media") String media_id
-            , @RequestParam(value = "c_id") String c_id
-            , @RequestParam(value = "redirect") String redirect
-    ) {
 
-        log.debug("/test/unified_id_redirect");
+    @RequestMapping("/bc_alert")
+    public String bcAlert() {
+        return "bc_alert";
+    }
 
 
+    @RequestMapping("/bc_badges")
+    public String bc_badges() {
+        return "bc_badges";
+    }
 
-        URI redirectUrl = null;
-        try {
-            redirectUrl = new URI(redirect);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+    @RequestMapping("/bc_breadcrumb-pagination")
+    public String bc_breadcrumb_pagination() {
+        return "bc_breadcrumb-pagination";
+    }
 
+    @RequestMapping("/bc_button")
+    public String bc_button() {
+        return "bc_button";
+    }
 
+    @RequestMapping("/bc_card")
+    public String bc_card() {
+        return "bc_card";
+    }
 
-//        ResponseCookie moaIdCookie = ResponseCookie.from(EnumCookieIdType.MUID.getCode(), "1111-2222")
-//                .domain(".tg360t.com")
-////                .sameSite("None")
-////                .httpOnly(false)
-////                .secure(true)
-//                .path("/")
-//                .maxAge((86400*365)*10)
-//                .build();
+    @RequestMapping("/bc_carousel")
+    public String bc_carousel() {
+        return "bc_carousel";
+    }
 
-        ResponseCookie mediaCookie = ResponseCookie.from("_media_id", media_id + "::" + c_id)
-                .domain(".tg360t.com")
-//                .sameSite("None")
-//                .httpOnly(false)
-//                .secure(true)
-                .path("/")
-                .maxAge((86400*365)*10)
-                .build();
+    @RequestMapping("/bc_collapse")
+    public String bc_collapse() {
+        return "bc_collapse";
+    }
 
-        //응답헤더에 쿠키 추가.
-//        if(originDomain == null || "".equals(originDomain)) {
-//            res.setHeader("Access-Control-Allow-Origin", "*");
-//        } else {
-//            res.setHeader("Access-Control-Allow-Origin", originDomain);
-//        }
+    @RequestMapping("/bc_modal")
+    public String bc_modal() {
+        return "bc_modal";
+    }
 
-        res.setHeader("p3p","CP=\"NON DSP COR CURa PSA PSD OUR BUS NAV STA\"");
-//        res.addCookie(moaIdCookie);
-//        res.setHeader("Set-Cookie",moaIdCookie.toString());
-        res.addHeader("Set-Cookie",mediaCookie.toString());
+    @RequestMapping("/bc_progress")
+    public String bc_progress() {
+        return "bc_progress";
+    }
 
+    @RequestMapping("/form_elements")
+    public String form_elements() {
+        return "form_elements";
+    }
 
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setLocation(redirectUrl);
+    @RequestMapping("/form2_radio")
+    public String form2_radio() {
+        return "form2_radio";
+    }
 
-        return new ResponseEntity<>(httpHeaders, HttpStatus.FOUND); // 302 Redirect
+    @RequestMapping("/form2_input_group")
+    public String form2_input_group() {
+        return "form2_input_group";
+    }
+
+    @RequestMapping("/form2_checkbox")
+    public String form2_checkbox() {
+        return "form2_checkbox";
+    }
+
+    @RequestMapping("/form2_basic")
+    public String form2_basic() {
+        return "form2_basic";
+    }
+
+    @RequestMapping("/chart-apex")
+    public String chart_apex() {
+        return "chart-apex";
     }
 }
 
