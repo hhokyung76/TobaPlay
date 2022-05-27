@@ -55,6 +55,10 @@ dependencies {
 
 
     implementation 'ch.obermuhlner:java-scriptengine:2.0.0'
+    implementation 'io.vertx:vertx-core:4.3.0'
+
+    implementation 'io.vertx:vertx-web:4.3.0'
+
 }
 
 tasks.named('test') {
