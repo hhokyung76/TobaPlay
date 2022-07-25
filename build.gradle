@@ -58,6 +58,7 @@ dependencies {
     implementation 'io.vertx:vertx-core:4.3.0'
 
     implementation 'io.vertx:vertx-web:4.3.0'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
 
 }
 
