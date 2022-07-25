@@ -10,7 +10,7 @@ public class TestSsh {
     public static void main(String[] args) {
         try {
             //listFolderStructure("hklee", "o07901!23Lhk", "localhost", 22, "ls -al");
-            listFolderStructure("sysadmin", "kbstar12!@", "10.140.20.36", 2022, "ls -al");
+            listFolderStructure("hklee", "o07901!23Hok", "10.15.0.140", 22, "ls -al");
         } catch (Exception e) {
             e.printStackTrace();
         }

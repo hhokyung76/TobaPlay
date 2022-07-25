@@ -1,6 +1,5 @@
 package com.toba.tobaplay;
 
-import com.toba.tobaplay.web.vertx.MainVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
@@ -14,14 +13,14 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @Slf4j
-public class TobaFlowApplication implements CommandLineRunner {
+public class TobaPlayApplication implements CommandLineRunner {
 
     private Vertx vertx;
 
     public static void main(String[] args) {
 
         System.setProperty("spring.devtools.livereload.enabled", "true");
-        SpringApplication.run(TobaFlowApplication.class, args);
+        SpringApplication.run(TobaPlayApplication.class, args);
     }
 
     @Override

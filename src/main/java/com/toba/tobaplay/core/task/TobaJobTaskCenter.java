@@ -56,7 +56,7 @@ public class TobaJobTaskCenter implements Callable<Map<String, Object>> {
             if (taskInfo.getTaskType().equals("TBT_CMD")) {
                 String cmd = taskInfo.getTaskDesc();
 
-                String output = executeCommand(taskInfo);
+                String output = executeProcess(taskInfo);
 
                 log.info("TBT_CMD output: "+output);
             }
@@ -72,17 +72,24 @@ public class TobaJobTaskCenter implements Callable<Map<String, Object>> {
         try {
             p = Runtime.getRuntime().exec(taskInfo.getTaskDesc());
             p.waitFor();
-            BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(p.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(p.getErrorStream()));
 
             String line = "";
             while ((line = reader.readLine())!= null) {
                 output.append(line + "\n");
             }
+            while ((line = errorReader.readLine()) != null) {
+                log.error(line);
+            }
+
+            p.getInputStream().close();
+            p.getErrorStream().close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+//        output.length()
 
         return output.toString();
 
