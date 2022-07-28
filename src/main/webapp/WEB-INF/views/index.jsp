@@ -106,10 +106,10 @@
 	<!-- [ Mobile header ] End -->
 
 	<!-- [ navigation menu ] start -->
-    <jsp:include page="/WEB-INF/views/navi.jsp"/>
+    <jsp:include page="./navi.jsp"/>
 	<!-- [ navigation menu ] end -->
 	<!-- [ Header ] start -->
-    <jsp:include page="/WEB-INF/views/header.jsp"/>
+    <jsp:include page="./header.jsp"/>
 	<!-- [ Header ] end -->
 
 <!-- [ Main Content ] start -->
@@ -121,11 +121,11 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="page-header-title">
-                            <h5 class="m-b-10">Dashboard sale</h5>
+                            <h5 class="m-b-10">Dashboard</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item">Dashboard sale</li>
+                            <li class="breadcrumb-item"><a href="index">Home</a></li>
+                            <li class="breadcrumb-item">Dashboard</li>
                         </ul>
                     </div>
                 </div>

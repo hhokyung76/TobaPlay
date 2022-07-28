@@ -239,6 +239,7 @@
 						<button type="button" class="btn  btn-icon btn-danger"><i data-feather="slash"></i></button>
 						<button type="button" class="btn  btn-icon btn-warning"><i data-feather="alert-triangle"></i></button>
 						<button type="button" class="btn  btn-icon btn-info"><i data-feather="info"></i></button>
+						<button type="button" class="btn  btn-icon btn-info"><i data-feather="info"></i></button>
 					</div>
 				</div>
 			</div>

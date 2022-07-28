@@ -20,16 +20,16 @@
 
 
     <!-- Favicon icon -->
-    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="../static/assets/images/favicon.svg" type="image/x-icon">
 
     <!-- font css -->
-    <link rel="stylesheet" href="assets/fonts/feather.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome.css">
-    <link rel="stylesheet" href="assets/fonts/material.css">
+    <link rel="stylesheet" href="../static/assets/fonts/feather.css">
+    <link rel="stylesheet" href="../static/assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="../static/assets/fonts/material.css">
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
-    <script src="js/main.js" type="module"></script>
+    <link rel="stylesheet" href="../static/assets/css/style.css" id="main-style-link">
+    <script src="../static/js/main.js" type="module"></script>
     <script>
         function includeHTML(callback) {
             var z, i, elmnt, file, xhr;
@@ -83,7 +83,7 @@
 	<!-- [ Mobile header ] start -->
 	<div class="pc-mob-header pc-header">
 		<div class="pcm-logo">
-			<img src="assets/images/logo.svg" alt="" class="logo logo-lg">
+			<img src="../static/assets/images/logo.svg" alt="" class="logo logo-lg">
 		</div>
 		<div class="pcm-toolbar">
 			<a href="#!" class="pc-head-link" id="mobile-collapse">
@@ -185,7 +185,7 @@
 					</li>
 					<li class="dropdown pc-h-item">
 						<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<img src="assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
+							<img src="../static/assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
 							<span>
 								<span class="user-name">Joseph William</span>
 								<span class="user-desc">Administrator</span>
@@ -411,7 +411,7 @@
                                     <tbody>
                                         <tr>
                                             <td>HeadPhone</td>
-                                            <td><img src="assets/images/widget/p1.jpg" alt="" class="img-20"></td>
+                                            <td><img src="../static/assets/images/widget/p1.jpg" alt="" class="img-20"></td>
                                             <td>
                                                 <div><label class="badge bg-light-warning">Pending</label></div>
                                             </td>
@@ -420,7 +420,7 @@
                                         </tr>
                                         <tr>
                                             <td>Iphone 6</td>
-                                            <td><img src="assets/images/widget/p2.jpg" alt="" class="img-20"></td>
+                                            <td><img src="../static/assets/images/widget/p2.jpg" alt="" class="img-20"></td>
                                             <td>
                                                 <div><label class="badge bg-light-danger">Cancel</label></div>
                                             </td>
@@ -429,7 +429,7 @@
                                         </tr>
                                         <tr>
                                             <td>Jacket</td>
-                                            <td><img src="assets/images/widget/p3.jpg" alt="" class="img-20"></td>
+                                            <td><img src="../static/assets/images/widget/p3.jpg" alt="" class="img-20"></td>
                                             <td>
                                                 <div><label class="badge bg-light-success">Success</label></div>
                                             </td>
@@ -438,7 +438,7 @@
                                         </tr>
                                         <tr>
                                             <td>Sofa</td>
-                                            <td><img src="assets/images/widget/p4.jpg" alt="" class="img-20"></td>
+                                            <td><img src="../static/assets/images/widget/p4.jpg" alt="" class="img-20"></td>
                                             <td>
                                                 <div><label class="badge bg-light-danger">Cancel</label></div>
                                             </td>
@@ -447,7 +447,7 @@
                                         </tr>
                                         <tr>
                                             <td>Iphone 6</td>
-                                            <td><img src="assets/images/widget/p2.jpg" alt="" class="img-20"></td>
+                                            <td><img src="../static/assets/images/widget/p2.jpg" alt="" class="img-20"></td>
                                             <td>
                                                 <div><label class="badge bg-light-success">Success</label></div>
                                             </td>
@@ -456,7 +456,7 @@
                                         </tr>
                                         <tr>
                                             <td>HeadPhone</td>
-                                            <td><img src="assets/images/widget/p1.jpg" alt="" class="img-20"></td>
+                                            <td><img src="../static/assets/images/widget/p1.jpg" alt="" class="img-20"></td>
                                             <td>
                                                 <div><label class="badge bg-light-warning">Pending</label></div>
                                             </td>
@@ -465,7 +465,7 @@
                                         </tr>
                                         <tr>
                                             <td>Iphone 6</td>
-                                            <td><img src="assets/images/widget/p2.jpg" alt="" class="img-20"></td>
+                                            <td><img src="../static/assets/images/widget/p2.jpg" alt="" class="img-20"></td>
                                             <td>
                                                 <div><label class="badge bg-light-danger">Cancel</label></div>
                                             </td>

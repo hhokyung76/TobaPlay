@@ -20,28 +20,32 @@
 
 
 	<!-- Favicon icon -->
-	<link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+	<link rel="icon" href="../static/assets/images/favicon.svg" type="image/x-icon">
 
 	<!-- font css -->
-	<link rel="stylesheet" href="assets/fonts/feather.css">
-	<link rel="stylesheet" href="assets/fonts/fontawesome.css">
-	<link rel="stylesheet" href="assets/fonts/material.css">
+	<link rel="stylesheet" href="../static/assets/fonts/feather.css">
+	<link rel="stylesheet" href="../static/assets/fonts/fontawesome.css">
+	<link rel="stylesheet" href="../static/assets/fonts/material.css">
 
 	<!-- vendor css -->
-	<link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+	<link rel="stylesheet" href="../static/assets/css/style.css" id="main-style-link">
 
 
 </head>
 
-<!-- [ auth-signin ] start -->
+<!-- [ auth-signup ] start -->
 <div class="auth-wrapper">
 	<div class="auth-content">
 		<div class="card">
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-						<img src="assets/images/logo-dark.svg" alt="" class="img-fluid mb-4">
-						<h4 class="mb-3 f-w-400">Signin</h4>
+						<img src="../static/assets/images/logo-dark.svg" alt="" class="img-fluid mb-4">
+						<h4 class="mb-3 f-w-400">Sign up</h4>
+						<div class="input-group mb-3">
+							<span class="input-group-text"><i data-feather="user"></i></span>
+							<input type="text" class="form-control" placeholder="Username">
+						</div>
 						<div class="input-group mb-3">
 							<span class="input-group-text"><i data-feather="mail"></i></span>
 							<input type="email" class="form-control" placeholder="Email address">
@@ -54,25 +58,25 @@
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
 								<label class="form-check-label" for="flexCheckChecked">
-									Save credentials
+									Send me the <a href="#!"> Newsletter</a> weekly.
 								</label>
 							</div>
 						</div>
-						<button class="btn btn-block btn-primary mb-4">Signin</button>
-						<p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p>
+						<button class="btn btn-primary btn-block mb-4">Sign up</button>
+						<p class="mb-2">Already have an account? <a href="auth-signin.html" class="f-w-400">Signin</a></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- [ auth-signin ] end -->
+<!-- [ auth-signup ] end -->
 
 <!-- Required Js -->
-<script src="assets/js/vendor-all.min.js"></script>
-<script src="assets/js/plugins/bootstrap.min.js"></script>
-<script src="assets/js/plugins/feather.min.js"></script>
-<script src="assets/js/pcoded.min.js"></script>
+<script src="../static/assets/js/vendor-all.min.js"></script>
+<script src="../static/assets/js/plugins/bootstrap.min.js"></script>
+<script src="../static/assets/js/plugins/feather.min.js"></script>
+<script src="../static/assets/js/pcoded.min.js"></script>
 
 
 </body>

@@ -27,10 +27,12 @@ import java.util.Map;
 @Controller
 public class BootstrapController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView boardListGet(ModelAndView mv) {
-        mv.setViewName("index");
-        //기능 코드는 생략
-        return mv;
+    public String boardListGet(ModelAndView mv) {
+        return "index";
+    }
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(ModelAndView mv) {
+        return "index";
     }
 
 
@@ -165,6 +167,16 @@ public class BootstrapController {
     @RequestMapping("/chart-apex")
     public String chart_apex() {
         return "chart-apex";
+    }
+
+    @RequestMapping("/icon-feather")
+    public String icon_feather() {
+        return "icon-feather";
+    }
+
+    @RequestMapping("/tbl_bootstrap")
+    public String tbl_bootstrap() {
+        return "tbl_bootstrap";
     }
 }
 

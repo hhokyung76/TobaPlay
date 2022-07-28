@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="utf-8">
 
 <head>
     <title>DashboardKit Bootstrap 5 Admin Template</title>
@@ -24,10 +24,74 @@
     <link rel="stylesheet" href="assets/fonts/feather.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome.css">
     <link rel="stylesheet" href="assets/fonts/material.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
     <!-- vendor css -->
     <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+    <script type="text/javascript">
+        $(document.body).ready(function () {
+            var API_SERVER = "http://localhost:8090";
+            var jobGrid = new ax5.ui.grid();
 
+            jobGrid.setConfig({
+                target: $('[data-ax5grid="job-grid1"]'),
+                columns: [
+                    {key: "a", label: "field A"},
+                    {key: "b", label: "field B"},
+                    {key: "c", label: "numbers C"},
+                    {key: "d", label: "field D"},
+                    {key: "e", label: "field E"},
+                    {key: "f", label: "field F"},
+                    {key: "g", label: "field G"},
+                    {key: "h", label: "field H"}
+                ]
+            });
+            //firstGrid.setData(gridList);
+            // 그리드 데이터 가져오기
+            $.ajax({
+                method: "GET",
+                url: API_SERVER + "/api/v1/testdatas",
+                dataType : "json",
+                success: function (res) {
+                    console.log("res: "+res);
+                    console.log("res.list: "+res.page);
+                    jobGrid.setData(res.list);
+                }
+            });
+
+            var taskGrid = new ax5.ui.grid();
+
+            taskGrid.setConfig({
+                target: $('[data-ax5grid="task-grid1"]'),
+                columns: [
+                    {key: "a", label: "field A"},
+                    {key: "b", label: "field B"},
+                    {key: "c", label: "numbers C"},
+                    {key: "d", label: "field D"},
+                    {key: "e", label: "field E"},
+                    {key: "f", label: "field F"},
+                    {key: "g", label: "field G"},
+                    {key: "h", label: "field H"}
+                ]
+            });
+            //firstGrid.setData(gridList);
+            // 그리드 데이터 가져오기
+            $.ajax({
+                method: "GET",
+                url: API_SERVER + "/api/v1/testdatas",
+                dataType : "json",
+                success: function (res) {
+                    console.log("res: "+res);
+                    console.log("res.list: "+res.page);
+                    taskGrid.setData(res.list);
+                }
+            });
+
+
+        });
+    </script>
 </head>
 
 <body class="">
@@ -62,10 +126,10 @@
 	<!-- [ Mobile header ] End -->
 
 	<!-- [ navigation menu ] start -->
-	<jsp:include page="/WEB-INF/views/navi.jsp"/>
+	<jsp:include page="../navi.jsp"/>
 	<!-- [ navigation menu ] end -->
 	<!-- [ Header ] start -->
-	<jsp:include page="/WEB-INF/views/header.jsp"/>
+	<jsp:include page="../header.jsp"/>
 	<!-- [ Header ] end -->
 
 
@@ -78,12 +142,12 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                         <div class="page-header-title">
-                            <h5 class="m-b-10">Form Elements</h5>
+                            <h5 class="m-b-10">Job Manager</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#!">Form Components</a></li>
-                            <li class="breadcrumb-item">Form basic</li>
+                            <li class="breadcrumb-item"><a href="/index">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Scheduler</a></li>
+                            <li class="breadcrumb-item">Job Manager</li>
                         </ul>
                     </div>
                 </div>
@@ -93,145 +157,23 @@
         <!-- [ Main Content ] start -->
         <div class="row">
             <!-- [ form-element ] start -->
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <!-- Basic Inputs -->
                 <div class="card">
                     <div class="card-header">
-                        <h5>Basic Inputs</h5>
+                        <h4>Job List</h4>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-primary">
-                            <div class="media align-items-center">
-                                <i class="feather icon-alert-circle h2"></i>
-                                <div class="media-body ml-3">
-                                    Basic HTML form components with custom style.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email address</label>
-                            <input type="email" class="form-control" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            <small>Your password must be between 8 and 30 characters.</small>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="exampleSelect1">Select</label>
-                            <select class="form-control" id="exampleSelect1">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="exampleSelect2">Multiple select</label>
-                            <select multiple="" class="form-control" id="exampleSelect2">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
-                            <small>Hold shift or press ctrl for multi select.</small>
-                        </div>
-                        <div class="form-group mb-0">
-                            <label class="form-label" for="exampleTextarea">Textarea</label>
-                            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary mr-2">Submit</button>
-                        <button type="reset" class="btn btn-light">Reset</button>
-                    </div>
-                </div>
-                <!-- HTML Input Types -->
-                <div class="card ">
-                    <div class="card-header">
-                        <h5>HTML Input Types</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-primary">
-                            <div class="media align-items-center">
-                                <i class="feather icon-alert-circle h2"></i>
-                                <div class="media-body ml-3">
-                                    Here are the different input types you can use in HTML. Check more at <a href="https://www.w3schools.com/html/html_form_input_types.asp" rel="nofollow">W3Schools</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-text-input" class="col-form-label">Simple Input Text</label>
-                            <input class="form-control" type="text" value="John Doe" id="demo-text-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-number-input" class="col-form-label">Number</label>
-                            <input class="form-control" type="number" value="100" id="demo-number-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-tel-input" class="col-form-label">Telephone</label>
-                            <input class="form-control" type="tel" value="+918888888888" id="demo-tel-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-email-input" class="col-form-label">Email</label>
-                            <input class="form-control" type="email" value="demo@example.com" id="demo-email-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-password-input" class="col-form-label">Password</label>
-                            <input class="form-control" type="password" value="password123" id="demo-password-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-input-file" class="col-form-label">File</label>
-                            <input class="form-control" type="file" id="demo-input-file">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-multi-input-file" class="col-form-label">Multi Files</label>
-                            <input class="form-control" type="file" id="demo-multi-input-file" multiple>
-                            <small>Try selecting more than one file when browsing for files.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-URL-input" class="col-form-label">URL</label>
-                            <input class="form-control" type="url" value="https://validator.w3.org/" id="demo-URL-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-search-input" class="col-form-label">Search</label>
-                            <input class="form-control" type="search" value="Best Admin Template" id="demo-search-input">
-                            <small>a search field behaves like a regular text field</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-datetime-local" class="col-form-label">Date Time Local</label>
-                            <input class="form-control" type="datetime-local" value="2021-12-31T04:03:20" id="demo-datetime-local">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-date-only" class="col-form-label">Date only</label>
-                            <input class="form-control" type="date" value="2021-12-31" id="demo-date-only">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-time-only" class="col-form-label">Time only</label>
-                            <input class="form-control" type="time" value="04:03:20" id="demo-time-only">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-month-only" class="col-form-label">Month only</label>
-                            <input class="form-control" type="month" value="2021-12" id="demo-month-only">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-week-only" class="col-form-label">Week only</label>
-                            <input class="form-control" type="week" value="2021-W41" id="demo-week-only">
-                        </div>
-                        <div class="form-group">
-                            <label for="demo-color-input" class="col-form-label">Color</label>
-                            <input class="form-control" type="color" value="#7267EF" id="demo-color-input">
-                        </div>
-                        <div class="form-group mb-0">
-                            <label for="demo-range-input" class="col-form-label">Range</label>
-                            <input class="form-range" type="range" min="0" max="50" id="demo-range-input">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary mr-2">Submit</button>
-                        <button class="btn btn-secondary">Cancel</button>
+                        <div data-ax5grid="job-grid1" data-ax5grid-config="{showLineNumber: true,
+                    showRowSelector: false,
+                    sortable: true,
+                    header: {align:'center', columnHeight: 40},
+                    body: {align: 'center', columnHeight: 30}
+                    }" style="height: 400px;"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <h5>Sizing</h5>
