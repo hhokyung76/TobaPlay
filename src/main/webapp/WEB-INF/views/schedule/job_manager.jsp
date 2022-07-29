@@ -1,3 +1,4 @@
+<%@page contentType = "text/html;charset=utf-8"%>
 <!DOCTYPE html>
 <html lang="utf-8">
 
@@ -24,13 +25,77 @@
     <link rel="stylesheet" href="assets/fonts/feather.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome.css">
     <link rel="stylesheet" href="assets/fonts/material.css">
+    <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
+    <script type="text/javascript" src="assets/js/common.js"></script>
     <!-- vendor css -->
     <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
     <script type="text/javascript">
+        var jobMode = {
+            init: function() {
+                // const pageMethods = CreateUpdateCampaign.methods;
+                // this.parseUrl();
+                //
+                // const pageData = CreateUpdateCampaign.data;
+                //
+                // CreateUpdateCampaign.data.pageTitle = '캠페인 생성';
+                //
+                // if (pageData.urlParams.no != null) {
+                //     CreateUpdateCampaign.data.pageTitle = '캠페인 수정';
+                //     CreateUpdateCampaign.data.campaignNo = pageData.urlParams.no;
+                //     pageMethods.loadData();
+                //     $("#cmpPurposeType").prop('disabled', true);
+                // }
+                //
+                // CreateUpdateCampaign.initializeActionListeners();
+                // CreateUpdateCampaign.renderPage();
+            },
+            renderPage: function() {
+                // const pageData = CreateUpdateCampaign.data;
+                //
+                // $("#pageTitle").text(pageData.pageTitle);
+                // $("#pageSubtitle").text(pageData.pageTitle);
+                // $("#mainButton").text(pageData.pageTitle);
+            },
+            methods: {
+                saveJob: function() {
+                    // if(!commonValidation("campaignForm"))
+                    //     return;
+
+                    const url = '/job/save';
+
+                    let callAjax = new comAjax();
+                    callAjax.setUrl(url);
+                    callAjax.setCallback(CreateUpdateCampaign.methods.parseCreateResponse);
+                    callAjax.setErrorCallback(CreateUpdateCampaign.methods.parseError);
+
+                    let jobId = $("#jobId").val();
+                    let jobName = $("#jobName").val();
+                    let jobDesc = $("#jobDesc").val();
+                    let cronExpr = $("#cronExpr").val();
+
+                    callAjax.addParam('jobId', jobId);
+                    callAjax.addParam('jobName', jobName);
+                    callAjax.addParam('jobDesc', jobDesc);
+                    callAjax.addParam('cronExpr', cronExpr);
+
+                    // add more entries
+
+                    if ($("#inActive").is(':checked')) {
+                        callAjax.addParam('inActive', "0");
+                    } else {
+                        callAjax.addParam('inActive', "1");
+                    }
+
+                    callAjax.setMethodType("POST");
+                    callAjax.ajax();
+                }
+
+            }
+        }
         $(document.body).ready(function () {
             var API_SERVER = "http://localhost:8090";
             var jobGrid = new ax5.ui.grid();
@@ -38,14 +103,9 @@
             jobGrid.setConfig({
                 target: $('[data-ax5grid="job-grid1"]'),
                 columns: [
-                    {key: "a", label: "field A"},
-                    {key: "b", label: "field B"},
-                    {key: "c", label: "numbers C"},
-                    {key: "d", label: "field D"},
-                    {key: "e", label: "field E"},
-                    {key: "f", label: "field F"},
-                    {key: "g", label: "field G"},
-                    {key: "h", label: "field H"}
+                    {key: "jobId", label: "Job ID", align: "center", width:200},
+                    {key: "jobName", label: "Job 이름", width:200},
+                    {key: "jobCronExpr", label: "Cron Expression", width:400}
                 ]
             });
             //firstGrid.setData(gridList);
@@ -66,14 +126,9 @@
             taskGrid.setConfig({
                 target: $('[data-ax5grid="task-grid1"]'),
                 columns: [
-                    {key: "a", label: "field A"},
-                    {key: "b", label: "field B"},
-                    {key: "c", label: "numbers C"},
-                    {key: "d", label: "field D"},
-                    {key: "e", label: "field E"},
-                    {key: "f", label: "field F"},
-                    {key: "g", label: "field G"},
-                    {key: "h", label: "field H"}
+                    {key: "jobId", label: "Job ID"},
+                    {key: "jobName", label: "Job Name"},
+                    {key: "jobCronExpr", label: "Cron Expression"}
                 ]
             });
             //firstGrid.setData(gridList);
@@ -157,82 +212,95 @@
         <!-- [ Main Content ] start -->
         <div class="row">
             <!-- [ form-element ] start -->
-            <div class="col-sm-12">
+            <div class="col-sm-11">
                 <!-- Basic Inputs -->
                 <div class="card">
-                    <div class="card-header">
-                        <h4>Job List</h4>
-                    </div>
+
                     <div class="card-body">
+                        <div class="i-block"><i data-feather="trash-2"></i></div>
+                        <br>
                         <div data-ax5grid="job-grid1" data-ax5grid-config="{showLineNumber: true,
-                    showRowSelector: false,
+                    showRowSelector: true,
                     sortable: true,
                     header: {align:'center', columnHeight: 40},
                     body: {align: 'center', columnHeight: 30}
-                    }" style="height: 400px;"></div>
+                    }" style="height: 300px;"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="card">
-                    <div class="card-header">
-                        <h5>Sizing</h5>
-                    </div>
                     <div class="card-body">
-                        <div class="alert alert-primary">
-                            <div class="media align-items-center">
-                                <i class="feather icon-alert-circle h2"></i>
-                                <div class="media-body ml-3">
-                                    Input sizing using <code>.form-control-lg</code> and <code>.form-control-sm</code> class.
+                        <section class="con">
+                            <div class="tblViewW write">
+                                <table class="tbl" width="100%" >
+                                    <colgroup>
+                                        <col width="160">
+                                        <col width="*">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Job ID<span class="req"> (필수입력)</span></th>
+                                            <td>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="jobId">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Job 이름<span class="req"> (필수입력)</span></th>
+                                            <td>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="jobName">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Job 설명</th>
+                                            <td>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="jobDesc"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Job Cron Expression</th>
+                                            <td>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="cronExpr">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">비활성화</th>
+                                            <td>
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" id="inActive">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> <!-- //tblViewW -->
+                        </section> <!-- //con -->
+                        <div class="card-footer">
+                            <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Modal Title</h5>
+                                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn  btn-secondary" data-dismiss="modal" onclick="jobMode.methods.saveJob();">Close</button>
+                                            <button type="button" class="btn  btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
-                            <small><code>.form-control-sm</code></small>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Default Input">
-                            <small><code>.form-control</code></small>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
-                            <small><code>.form-control-lg</code></small>
-                        </div>
-                        <hr>
-                        <div class="form-group">
-                            <label class="form-label">Large select</label>
-                            <select class="form-control form-control-lg">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Default select</label>
-                            <select class="form-control">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-0">
-                            <label class="form-label">Small select</label>
-                            <select class="form-control form-control-sm">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                            </select>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary mr-2">Submit</button>
-                            <button type="reset" class="btn btn-light">Reset</button>
+                            <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModalCenter" id="saveJobBtn">저 장</button>
+                            <button type="reset" class="btn btn-light" id="resetJobBtn">초기화</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-5">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Input Attributes </h5>
+                        <h5>Cron Expression 설명</h5>
                     </div>
                     <form>
                         <div class="card-body">
@@ -240,113 +308,25 @@
                                 <div class="media align-items-center">
                                     <i class="feather icon-alert-circle h2"></i>
                                     <div class="media-body ml-3">
-                                        Examples of <code>autofocus, value, readonly, disabled, required</code> attributes in Input .
+                                        * 5분 마다 실행 ex) 00:05, 00:10. 00:15.... 
+                                        <br> cron = "0 0/5 * * * *"
+                                        <br>* 1시간 마다 실행 ex) 01:00, 02:00, 03:00....
+                                        <br> cron = "0 0 0/1 * * *"
+                                        <br>* 매일 오후 18시마다 실행 ex) 18:00
+                                        <br> cron = "0 0 18 * * *"
+                                        <br>* 2018년도만 매일 오후 18시마다 실행 ex) 18:00
+                                        <br> cron = "0 0 18 * * * 2018"
+                                        <br>* 매일 오후 18시00분-18시55분 사이에 5분 간격으로 실행 ex) 18:00, 18:05.....18:55
+                                        <br> cron = "0 0/5 18 * * *"
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-auto-focus">Auto focus</label>
-                                <input type="email" class="form-control" placeholder="Enter email" id="example-auto-focus" autofocus>
-                                <small>autofocus on page load</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-value">Value</label>
-                                <input type="text" class="form-control" value="John Doe">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-required">Required</label>
-                                <input type="text" class="form-control" id="example-required" id="example-required" required>
-                                <small>Submit the form to see it in action</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-read-only">Readonly</label>
-                                <input type="text" class="form-control" value="demo@email.com" id="example-read-only" readonly>
-                                <small>The input <code>readonly</code> attribute specifies that an input field is read-only</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-disabled">Disabled</label>
-                                <input type="text" class="form-control" value="26" id="example-disabled" disabled>
-                                <small>The value of a <code>disabled</code> input field will not be sent when submitting the form</small>
-                            </div>
-                            <div class="form-group mb-0">
-                                <label class="form-label" for="example-disabled-select">Disabled select</label>
-                                <select class="form-control" id="example-disabled-select" disabled>
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                            </div>
+
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary mr-2">Submit</button>
-                            <button type="reset" class="btn btn-light">Reset</button>
                         </div>
                     </form>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Advance Input attributes </h5>
-                    </div>
-                    <form>
-                        <div class="card-body">
-                            <div class="alert alert-primary">
-                                <div class="media align-items-center">
-                                    <i class="feather icon-alert-circle h2"></i>
-                                    <div class="media-body ml-3">
-                                        Examples of <code>maxlength, min, max, step, pattern, list</code> attributes of Input. <br /> Submit form for checkout attribute functionality.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-max-length">Max Length</label>
-                                <input type="text" class="form-control" placeholder="Enter PIN" id="example-max-length" maxlength="4">
-                                <small>maxlength set to 4 characters</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-datemax">Date</label>
-                                <input type="date" class="form-control" id="example-datemax" max="1979-12-31">
-                                <small>Enter a date before 1980-01-01</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-datemin">Date</label>
-                                <input type="date" class="form-control" id="example-datemin" min="2000-01-02">
-                                <small>Enter a date after 2000-01-01</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-quantity">Quantity</label>
-                                <input type="number" class="form-control" id="example-quantity" min="1" max="5">
-                                <small>i.e.between 1 and 5</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-steps">Points</label>
-                                <input type="number" class="form-control" id="example-steps" step="3" value="1">
-                                <small>step set to 3</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="example-country-code">Country code</label>
-                                <input type="text" class="form-control" id="example-country-code" pattern="[A-Za-z]{3}" title="Three letter country code">
-                                <small><code>pattern</code> attribute - three letter country code</small>
-                            </div>
-                            <div class="form-group mb-0">
-                                <label class="form-label" for="example-data-list">List (Browsers)</label>
-                                <input type="text" class="form-control" id="example-data-list" list="browsers">
-                                <datalist id="browsers">
-                                    <option value="Internet Explorer">
-                                    <option value="Firefox">
-                                    <option value="Chrome">
-                                    <option value="Opera">
-                                    <option value="Safari">
-                                </datalist>
-                                <small>The datalist tag is not supported in Safari 12.0 (or earlier).</small>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button type="reset" class="btn btn-light">Reset</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- [ form-element ] end -->
             </div>
             <!-- [ form-element ] end -->
         </div>

@@ -18,7 +18,7 @@
         <div class="m-header">
             <a href="/" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <h2><b><span class="pc-mtext"><font color="white">&nbsp;Molecule Play</font></span></b></h2>
+                <h2><b><span class="pc-mtext"><font color="white">&nbsp;Job Play</font></span></b></h2>
                 <%--<img src="assets/images/logo.svg" alt="" class="logo logo-lg">test
                 <img src="assets/images/logo-sm.svg" alt="" class="logo logo-sm">--%>
             </a>
@@ -26,15 +26,14 @@
         <div class="navbar-content">
             <ul class="pc-navbar">
                 <li class="pc-item pc-caption">
-                    <label>Navigation</label>
+                    <label>Top</label>
                 </li>
                 <li class="pc-item">
                     <a href="index" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">home</i></span><span class="pc-mtext">Dashboard</span></a>
                 </li>
                 <li class="pc-item"><a href="cookie-page" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Cookie page</span></a></li>
                 <li class="pc-item pc-caption">
-                    <label>Elements</label>
-                    <span>UI Components</span>
+                    <label>Manager</label>
                 </li>
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">business_center</i></span><span class="pc-mtext">Scheduler</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>

@@ -1,3 +1,4 @@
+<%@page contentType = "text/html;charset=utf-8"%>
 <!DOCTYPE html>
 <html lang="utf-8">
 
@@ -181,7 +182,7 @@
                     </div>
                     <div class="card-body">
                         <div class="i-block"><i data-feather="trash-2"></i></div>
-                        <div class="i-block">&nbsp;</div>
+                        <br>
 
                         <div data-ax5grid="task-grid1" data-ax5grid-config="{showLineNumber: true,
                     showRowSelector: true,
@@ -279,8 +280,23 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary mr-2">Submit</button>
-                            <button type="reset" class="btn btn-light">Reset</button>
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLiveLabel">Modal Title</h5>
+                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Woohoo, you're reading this text in a modal!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn  btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary mr-2" data-target="#exampleModalLive">저 장</button>
+                            <button type="reset" class="btn btn-light">초기화</button>
                         </div>
                     </form>
                 </div>
