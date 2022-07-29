@@ -1,0 +1,13 @@
+-- job_play.job_mst definition
+
+CREATE TABLE `job_mst` (
+  `job_id` varchar(20) NOT NULL,
+  `job_name` varchar(100) NOT NULL,
+  `job_desc` varchar(230) DEFAULT NULL,
+  `job_cron` varchar(20) DEFAULT NULL,
+  `crt_tm` datetime DEFAULT NULL,
+  `crt_user_id` varchar(20) DEFAULT NULL,
+  `del_yn` varchar(1) NOT NULL DEFAULT 'N',
+  `del_tm` datetime DEFAULT NULL,
+  `del_user_id` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
